@@ -61,8 +61,8 @@ app.get('/customers',async(req, res,next) => {
 });
 
 app.get('/transactions',async (req,res) => {
-    const all_trans = await Transaction.find({}).sort({date:-1})
-    res.render('transactions',{"trans":all_trans})
+    const all_trans = await Transaction.find({}).sort({daWte:-1})
+    res.render("transactions",{"trans":all_trans})
 
 })
 

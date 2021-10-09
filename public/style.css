@@ -4,3 +4,63 @@
 .top-card{
     margin-top:200px;
 }
+
+.transactionFrom {
+    border: 1px solid black;
+    padding: 1rem;
+    font-weight: 600;
+  }
+  
+  .transactionFrom label {
+    padding-right: 0.5rem;
+  }
+  
+  .transactionFrom input,
+  .transactionFrom select {
+    background-color: #ddd;
+    padding: 0.5rem 1rem;
+    margin-bottom: 0.5rem;
+    border: none;
+  }
+  
+  .transactionFrom button {
+    padding: 0.5rem 1rem;
+    margin-top: 0.5rem;
+    background-color: #222;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 0.2rem;
+    font-size: 1rem;
+  }
+  
+  .transactionContainer,
+  .customers {
+    margin: auto;
+    margin-top: 4rem;
+    background-color: #eee;
+    width: 70%;
+  }
+  
+  table {
+    text-align: center;
+    width: 100%;
+    padding: 1rem;
+    background-color: #eee;
+  }
+  
+  th,
+  td {
+    padding: 1rem 2rem;
+  }
+  
+  th {
+    background-color: #222;
+    color: white;
+  }
+  
+  .transaction:nth-child(odd),
+  .customer:nth-child(odd) {
+    background-color: #ddd;
+  }
+  

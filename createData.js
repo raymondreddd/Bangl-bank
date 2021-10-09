@@ -35,12 +35,10 @@ const addData = async () =>{
                 name: "Piyush", email: "12preeta.sax@gmail.com", balance: 500,
             },
         ])
-        console.log(response);
+        // console.log(response);
     }catch(err){
         console.log(err);
     }
-
-    // console.log(response);
 
 }
 

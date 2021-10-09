@@ -15,7 +15,7 @@
                         </div>
                         <div class="input-group mb-3">
                             <label class="input-group-text" for="cati">Transfer to:</label>
-                            <select class="form-select" name="username" id="cati">
+                            <select class="form-select" name="to" id="cati">
                                 <% customers.forEach((c) => { %>
                                     <option style="text-transform: capitalize;" value="<%= c.name %>" >
                                         <%= c.name %>
@@ -28,7 +28,7 @@
                             <input type="number" class="form-control" name="amount" required min="0">
                         </div>
                         <button class="btn btn-success">Transfer</button>
-                        <a class="btn btn-dark" href="/customer">Back to Home</a>
+                        <a class="btn btn-dark" href="/customers">Back to Home</a>
                     </form>
                 </div>
             </div>
