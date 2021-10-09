@@ -80,12 +80,31 @@ app.get('/pay/:id',async(req,res,next)=>{
 
 app.post('/pay',async(req,res)=>{
     console.log(req.body);
+    const {from, to, amount} = req.body;
+    const from_cust = await Customer.findOne({name:from});
+    const to_cust = await Customer.findOne({name:to});
 
+    //Check if it is possible to transfer
+    if(from_cust.balance >0 && amount <= from_cust){
 
-    res.redirect('/customers');
+        const newTrans ={from:from,to:to, amount:amount,Date:Date()};
+        await Transaction.create(newTrans);
+        
+        await Customer.findOneAndUpdate({ name:from},{balance: from_cust.balance-amount})
+        await Customer.findOneAndUpdate({ name:to},{balance: to_cust.balance+amount})
+        console.log("Success transfer");
+        res.redirect('/customers');
+    }
+    else{
+        const message="Amount should be within limits";
+        res.render('error',{message})
+    }
+
+    
     //1st deduct from sender
 })
 
 app.listen(port, () => {
     console.log(`Server at ${port}`);
+    
 })
