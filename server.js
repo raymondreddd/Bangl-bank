@@ -48,8 +48,6 @@ app.get('/',async (req,res) => {
     res.render('index');
 })
 
-
-
 app.get('/customers',async(req, res,next) => {
     try{
         const cust = await Customer.find({});
@@ -61,6 +59,12 @@ app.get('/customers',async(req, res,next) => {
         console.log(err);
     }
 });
+
+app.get('/transactions',async (req,res) => {
+    const all_trans = await Transaction.find({}).sort({date:-1})
+    res.render('transactions',{"trans":all_trans})
+
+})
 
 app.get('/pay/:id',async(req,res,next)=>{
 
@@ -90,8 +94,8 @@ app.post('/pay',async(req,res)=>{
         const newTrans ={from:from,to:to, amount:amount,Date:Date()};
         await Transaction.create(newTrans);
         
-        await Customer.findOneAndUpdate({ name:from},{balance: from_cust.balance-amount})
-        await Customer.findOneAndUpdate({ name:to},{balance: to_cust.balance+amount})
+        await Customer.findOneAndUpdate({ name:from},{balance: parseInt(from_cust.balance)-parseInt(amount)})
+        await Customer.findOneAndUpdate({ name:to},{balance: parseInt(to_cust.balance)+parseInt(amount)})
         console.log("Success transfer");
         res.redirect('/customers');
     }
