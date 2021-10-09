@@ -1,0 +1,39 @@
+<%- include('./partials/header') %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card">
+                <div class="card-header">
+                    <h1>Tranfer Money</h1>
+                </div>
+                <div class="card-body">
+                    <form action="/pay" method="POST" class="needs-validation" novalidate>
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="form">From: </label>
+                            <input type="text" name="from" value= <%=from %> />
+                        </div>
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="cati">Transfer to:</label>
+                            <select class="form-select" name="username" id="cati">
+                                <% customers.forEach((c) => { %>
+                                    <option style="text-transform: capitalize;" value="<%= c.name %>" >
+                                        <%= c.name %>
+                                    </option> <!-- Terenary Operator added so that one cannot select themselves -->
+                                <% }) %>
+                            </select>
+                        </div>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Amount :</span>
+                            <input type="number" class="form-control" name="amount" required min="0">
+                        </div>
+                        <button class="btn btn-success">Transfer</button>
+                        <a class="btn btn-dark" href="/customer">Back to Home</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%- include('./partials/footer') %>
